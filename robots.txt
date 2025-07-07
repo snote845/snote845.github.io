@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://snote845.github.io/sitemap.xml
