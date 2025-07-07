@@ -6,4 +6,4 @@ categories: [tinker, dex]
 tags: [tinker, dex]
 ---
 
-tinker 中本质上是采用差量更新+重构+ClassLoader 路径管理来的策略
+tinker 中本质上是采用差量更新+重构+ClassLoader 路径管理来的策略，先占坑，后续再补充。
