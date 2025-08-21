@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: snote845 # the main title
 
-tagline: 不只是记录 # it will display as the subtitle
+tagline: 记录 * 思考 * 分享 # the subtitle will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A personal blog focused on programming, technology, and software development insights. Sharing knowledge, tutorials, and experiences in the world of coding.
