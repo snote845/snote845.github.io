@@ -1,4 +1,5 @@
 ---
+excerpt: ### Android 中 package 与 applicationId 的理解最近在打包时碰到了在 apk 的包名 applicationId 目录下 无法找到R\$styleable.smali 文件的问题？然后分析了一下AndroidManifest.xml 中 package 与 appl...
 layout: post
 title: "package 与 applicationId 的区别"
 date: 2025-05-15 21:00:00 +0800

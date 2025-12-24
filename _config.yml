@@ -47,10 +47,10 @@ social:
 # Site Verification Settings
 webmaster_verifications:
   google: 7wJxW5C0ZEo8lNz52NEUd2uPU_KSvacTHAmf7GmE8Hc # Google verification code
-  bing: # fill in your Bing verification code
+  bing: # 前往 https://www.bing.com/webmasters 获取验证码
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
+  baidu: # 前往 https://ziyuan.baidu.com/ 获取验证码
   facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------

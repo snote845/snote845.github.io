@@ -1,3 +1,4 @@
+excerpt: layout: post title: "Android dex 加载流程" date: 2025-06-20 19:00:00 +0800 categories: [Android, dex, oat,vdex,odex] tags: [Android, dex, oat, vdex, odex]...
 ---
 layout: post
 title: "Android dex 加载流程"
