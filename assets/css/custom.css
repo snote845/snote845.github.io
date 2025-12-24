@@ -317,6 +317,49 @@ img:hover {
 }
 
 /* ==================================================
+   头像暗色模式优化
+   ================================================== */
+[data-theme="dark"] .avatar,
+[data-theme="dark"] .sidebar-avatar,
+[data-theme="dark"] img[src*="avatar"],
+[data-theme="dark"] img[src*="icon"] {
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .avatar:hover,
+[data-theme="dark"] .sidebar-avatar:hover,
+[data-theme="dark"] img[src*="avatar"]:hover,
+[data-theme="dark"] img[src*="icon"]:hover {
+  filter: brightness(1) contrast(1.05);
+}
+
+/* 为头像添加暗色蒙版效果 */
+[data-theme="dark"] .profile-wrapper img,
+[data-theme="dark"] .site-header img {
+  position: relative;
+}
+
+[data-theme="dark"] .profile-wrapper img::after,
+[data-theme="dark"] .site-header img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 头像悬停时蒙版变淡 */
+[data-theme="dark"] .profile-wrapper img:hover::after,
+[data-theme="dark"] .site-header img:hover::after {
+  opacity: 0.5;
+}
+
+/* ==================================================
    按钮增强
    ================================================== */
 .btn {
