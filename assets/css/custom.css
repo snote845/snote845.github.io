@@ -1,0 +1,173 @@
+/* ==================================================
+   自定义样式 - 用户体验增强
+   ================================================== */
+
+/* ========== 目录悬浮优化 ========== */
+#toc-wrapper {
+  top: 5rem !important; /* 距离顶部位置 */
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* 目录滚动条样式 */
+#toc-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+#toc-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#toc-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+#toc-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 目录链接样式优化 */
+#toc a {
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+#toc a:hover {
+  border-left-color: #2196f3;
+  padding-left: 0.75rem;
+}
+
+#toc .active-link {
+  border-left-color: #2196f3;
+  font-weight: 600;
+  color: #2196f3 !important;
+}
+
+/* ========== 代码块优化 ========== */
+/* 代码块复制按钮 */
+.highlight {
+  position: relative;
+}
+
+.highlight::before {
+  content: '复制';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.highlight:hover::before {
+  opacity: 1;
+}
+
+/* 代码块行号样式 */
+.highlight .lineno {
+  padding-right: 0.5rem;
+  color: rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+/* ========== 链接悬停效果 ========== */
+a {
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+/* ========== 图片优化 ========== */
+img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== 按钮增强 ========== */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ========== 平滑滚动 ========== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== 响应式优化 ========== */
+@media (max-width: 768px) {
+  #toc-wrapper {
+    max-height: 50vh;
+  }
+
+  /* 移动端图片优化 */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ========== 深色模式适配 ========== */
+@media (prefers-color-scheme: dark) {
+  #toc-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  #toc-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+[data-theme="dark"] #toc-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] #toc-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 加载动画 ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-content > p,
+.post-content > h2,
+.post-content > h3 {
+  animation: fadeIn 0.5s ease backwards;
+}
+
+.post-content > h2 {
+  animation-delay: 0.1s;
+}
+
+.post-content > h3 {
+  animation-delay: 0.2s;
+}
