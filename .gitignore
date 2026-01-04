@@ -25,3 +25,6 @@ package-lock.json
 # Misc
 _sass/vendors
 assets/js/dist
+
+# 部署配置文件（包含敏感信息）
+tools/deploy-config.sh
