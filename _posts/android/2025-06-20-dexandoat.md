@@ -4,6 +4,7 @@ title: "Android dex 加载流程"
 date: 2025-06-20 19:00:00 +0800
 categories: [Android, dex, oat,vdex,odex]
 tags: [Android, dex, oat, vdex, odex]
+excerpt: 深入分析 Android APK 中 dex、vdex、odex 文件的加载过程和 ArtMethod 的执行机制。
 ---
 
 ### Apk 中 dex，vdex，odex 文件的加载过程

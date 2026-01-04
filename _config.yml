@@ -6,7 +6,7 @@ theme: jekyll-theme-chirpy
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: zh-CN
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: Asia/Shanghai
@@ -19,7 +19,7 @@ title: snote845 # the main title
 tagline: 记录 * 思考 * 分享 # the subtitle will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A personal blog focused on programming, technology, and software development insights. Sharing knowledge, tutorials, and experiences in the world of coding.
+  个人技术博客，专注于 Android、Flutter、Unity、Gradle 等编程技术的学习与分享。记录开发经验、技术教程和编程心得。
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -47,10 +47,10 @@ social:
 # Site Verification Settings
 webmaster_verifications:
   google: 7wJxW5C0ZEo8lNz52NEUd2uPU_KSvacTHAmf7GmE8Hc # Google verification code
-  bing: # fill in your Bing verification code
+  bing: # 前往 https://www.bing.com/webmasters 获取验证码
   alexa: # fill in your Alexa verification code
   yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
+  baidu: # 前往 https://ziyuan.baidu.com/ 获取验证码
   facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------
@@ -141,6 +141,7 @@ pwa:
   enabled: true # The option for PWA feature (installable)
   cache:
     enabled: true # The option for PWA offline cache
+    max_age: 30 # PWA 缓存过期时间（天）
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.

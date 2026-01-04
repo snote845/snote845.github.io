@@ -1,19 +1,51 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
 root = true
 
+# 所有文件的默认设置
 [*]
 charset = utf-8
-indent_style = space
-indent_size = 2
-trim_trailing_whitespace = true
-# Unix-style newlines with a newline ending every file
 end_of_line = lf
 insert_final_newline = true
+trim_trailing_whitespace = true
 
-[*.{js,css,scss}]
-quote_type = single
-
-[*.{yml,yaml}]
-quote_type = double
-
+# Markdown 文件
 [*.md]
 trim_trailing_whitespace = false
+max_line_length = off
+
+# YAML 配置文件
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# HTML 文件
+[*.{html,xml}]
+indent_style = space
+indent_size = 2
+
+# CSS/SCSS 文件
+[*.{css,scss}]
+indent_style = space
+indent_size = 2
+
+# JavaScript/TypeScript 文件
+[*.{js,ts}]
+indent_style = space
+indent_size = 2
+
+# Ruby 文件
+[*.{rb}]
+indent_style = space
+indent_size = 2
+
+# Shell 脚本
+[*.sh]
+end_of_line = lf
+
+# Python 文件
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 88

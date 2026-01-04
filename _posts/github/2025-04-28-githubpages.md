@@ -1,4 +1,5 @@
 ---
+excerpt: # Github Pages1. [注册 github 账户 ](https://github.com/)2. 搜索 chirpy主题的仓库 3. [按照 chirpy 文档进行设置](https://chirpy.cotes.page/posts/getting-started/)4. 拉取到本地...
 layout: post
 title: "Github Pages"
 date: 2025-04-28 19:00:00 +0800

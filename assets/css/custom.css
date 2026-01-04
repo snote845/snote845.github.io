@@ -1,0 +1,515 @@
+/* ==================================================
+   自定义样式 - 用户体验与暗色模式优化
+   ================================================== */
+
+/* ==================================================
+   全局变量 - 暗色模式色彩系统
+   ================================================== */
+[data-theme="dark"] {
+  /* 提高对比度的文本颜色 */
+  --custom-text-primary: #e8e8e8;
+  --custom-text-secondary: #c0c0c0;
+  --custom-text-muted: #9a9a9a;
+
+  /* 背景色 - 降低纯黑，使用深灰增加层次 */
+  --custom-bg-primary: #1a1a1a;
+  --custom-bg-secondary: #242424;
+  --custom-bg-tertiary: #2d2d2d;
+
+  /* 边框和分隔线 */
+  --custom-border-color: #404040;
+  --custom-divider-color: #333333;
+
+  /* 链接和强调色 - 更亮的蓝色 */
+  --custom-link-color: #64b5f6;
+  --custom-link-hover: #90caf9;
+  --custom-accent-color: #64b5f6;
+
+  /* 卡片阴影 - 使用亮色阴影增加层次 */
+  --custom-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --custom-card-shadow-hover: 0 8px 30px rgba(100, 181, 246, 0.15);
+}
+
+/* ==================================================
+   暗色模式全局样式优化
+   ================================================== */
+[data-theme="dark"] {
+  /* 正文容器优化 */
+  .container,
+  .main-content {
+    background-color: var(--custom-bg-primary) !important;
+  }
+
+  /* 侧边栏优化 */
+  .sidebar {
+    background-color: var(--custom-bg-secondary) !important;
+    border-right: 1px solid var(--custom-border-color) !important;
+  }
+
+  /* 顶部栏优化 */
+  #topbar-wrapper {
+    background-color: var(--custom-bg-secondary) !important;
+    border-bottom: 1px solid var(--custom-border-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* 文章内容区域 */
+  .post-content {
+    color: var(--custom-text-primary) !important;
+  }
+
+  .post-content p {
+    color: var(--custom-text-primary) !important;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  /* 标题优化 */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--custom-text-primary) !important;
+    font-weight: 600;
+  }
+
+  h1 { font-weight: 700; }
+  h2 {
+    border-bottom: 1px solid var(--custom-border-color) !important;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  /* 链接优化 */
+  a {
+    color: var(--custom-link-color) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--custom-link-hover) !important;
+    text-decoration: underline;
+  }
+
+  /* 代码块优化 */
+  pre, code {
+    background-color: var(--custom-bg-tertiary) !important;
+    border: 1px solid var(--custom-border-color) !important;
+    border-radius: 6px;
+  }
+
+  pre {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .highlight {
+    background-color: var(--custom-bg-tertiary) !important;
+    border-radius: 8px;
+  }
+
+  /* 引用块优化 */
+  blockquote {
+    border-left: 4px solid var(--custom-accent-color) !important;
+    background-color: var(--custom-bg-secondary) !important;
+    color: var(--custom-text-secondary) !important;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* 表格优化 */
+  table {
+    border-color: var(--custom-border-color) !important;
+  }
+
+  th {
+    background-color: var(--custom-bg-tertiary) !important;
+    color: var(--custom-text-primary) !important;
+    border-color: var(--custom-border-color) !important;
+  }
+
+  td {
+    border-color: var(--custom-border-color) !important;
+    color: var(--custom-text-secondary) !important;
+  }
+
+  /* 列表优化 */
+  ul, ol {
+    color: var(--custom-text-secondary) !important;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* 分隔线 */
+  hr {
+    border-color: var(--custom-divider-color) !important;
+  }
+
+  /* 标签和分类 */
+  .post-tag, .category-list-item {
+    background-color: var(--custom-bg-tertiary) !important;
+    border: 1px solid var(--custom-border-color) !important;
+    color: var(--custom-text-secondary) !important;
+  }
+
+  /* 按钮优化 */
+  .btn {
+    background-color: var(--custom-bg-tertiary) !important;
+    color: var(--custom-text-primary) !important;
+    border: 1px solid var(--custom-border-color) !important;
+  }
+
+  .btn:hover {
+    background-color: var(--custom-accent-color) !important;
+    color: #000 !important;
+    border-color: var(--custom-accent-color) !important;
+  }
+
+  /* 输入框 */
+  input, textarea {
+    background-color: var(--custom-bg-tertiary) !important;
+    color: var(--custom-text-primary) !important;
+    border-color: var(--custom-border-color) !important;
+  }
+
+  input:focus, textarea:focus {
+    border-color: var(--custom-accent-color) !important;
+    outline: none;
+  }
+
+  /* 卡片样式 */
+  .card {
+    background-color: var(--custom-bg-secondary) !important;
+    border: 1px solid var(--custom-border-color) !important;
+    box-shadow: var(--custom-card-shadow) !important;
+  }
+
+  .card:hover {
+    box-shadow: var(--custom-card-shadow-hover) !important;
+  }
+
+  /* 元数据 */
+  .post-meta {
+    color: var(--custom-text-muted) !important;
+  }
+
+  /* 页脚 */
+  footer {
+    background-color: var(--custom-bg-secondary) !important;
+    border-top: 1px solid var(--custom-border-color) !important;
+    color: var(--custom-text-muted) !important;
+  }
+}
+
+/* ==================================================
+   目录悬浮优化（浅色和深色模式）
+   ================================================== */
+#toc-wrapper {
+  top: 5rem !important;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* 浅色模式滚动条 */
+#toc-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+#toc-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#toc-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+#toc-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 深色模式滚动条 */
+[data-theme="dark"] #toc-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] #toc-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* 目录链接样式 */
+#toc a {
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  color: inherit;
+}
+
+#toc a:hover {
+  border-left-color: #2196f3;
+  padding-left: 0.75rem;
+}
+
+[data-theme="dark"] #toc a:hover {
+  border-left-color: var(--custom-accent-color);
+}
+
+#toc .active-link {
+  border-left-color: #2196f3;
+  font-weight: 600;
+}
+
+[data-theme="dark"] #toc .active-link {
+  border-left-color: var(--custom-accent-color);
+  color: var(--custom-accent-color) !important;
+}
+
+/* ==================================================
+   代码块优化
+   ================================================== */
+.highlight {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+/* 深色模式代码块特别优化 */
+[data-theme="dark"] .highlight {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+}
+
+[data-theme="dark"] .highlight code {
+  color: #d4d4d4 !important;
+}
+
+/* 代码行号 */
+.highlight .lineno {
+  padding-right: 0.5rem;
+  color: rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+[data-theme="dark"] .highlight .lineno {
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ==================================================
+   图片优化
+   ================================================== */
+img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] img {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] img:hover {
+  box-shadow: 0 4px 20px rgba(100, 181, 246, 0.2);
+}
+
+/* ==================================================
+   头像暗色模式优化
+   ================================================== */
+[data-theme="dark"] .avatar,
+[data-theme="dark"] .sidebar-avatar,
+[data-theme="dark"] img[src*="avatar"],
+[data-theme="dark"] img[src*="icon"] {
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .avatar:hover,
+[data-theme="dark"] .sidebar-avatar:hover,
+[data-theme="dark"] img[src*="avatar"]:hover,
+[data-theme="dark"] img[src*="icon"]:hover {
+  filter: brightness(1) contrast(1.05);
+}
+
+/* 为头像添加暗色蒙版效果 */
+[data-theme="dark"] .profile-wrapper img,
+[data-theme="dark"] .site-header img {
+  position: relative;
+}
+
+[data-theme="dark"] .profile-wrapper img::after,
+[data-theme="dark"] .site-header img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 头像悬停时蒙版变淡 */
+[data-theme="dark"] .profile-wrapper img:hover::after,
+[data-theme="dark"] .site-header img:hover::after {
+  opacity: 0.5;
+}
+
+/* ==================================================
+   按钮增强
+   ================================================== */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .btn:hover {
+  box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ==================================================
+   平滑滚动
+   ================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==================================================
+   响应式优化
+   ================================================== */
+@media (max-width: 768px) {
+  #toc-wrapper {
+    max-height: 50vh;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ==================================================
+   加载动画
+   ================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-content > p,
+.post-content > h2,
+.post-content > h3 {
+  animation: fadeIn 0.5s ease backwards;
+}
+
+.post-content > h2 {
+  animation-delay: 0.1s;
+}
+
+.post-content > h3 {
+  animation-delay: 0.2s;
+}
+
+/* ==================================================
+   搜索框优化（深色模式）
+   ================================================== */
+[data-theme="dark"] #search-input {
+  background-color: var(--custom-bg-tertiary) !important;
+  color: var(--custom-text-primary) !important;
+  border-color: var(--custom-border-color) !important;
+}
+
+[data-theme="dark"] #search-input::placeholder {
+  color: var(--custom-text-muted) !important;
+}
+
+[data-theme="dark"] #search-input:focus {
+  border-color: var(--custom-accent-color) !important;
+  box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2) !important;
+}
+
+/* ==================================================
+   侧边栏菜单优化
+   ================================================== */
+[data-theme="dark"] .sidebar .nav-item {
+  color: var(--custom-text-secondary) !important;
+}
+
+[data-theme="dark"] .sidebar .nav-item:hover,
+[data-theme="dark"] .sidebar .nav-item.active {
+  background-color: var(--custom-bg-tertiary) !important;
+  color: var(--custom-text-primary) !important;
+}
+
+/* ==================================================
+   分页优化
+   ================================================== */
+[data-theme="dark"] .pagination .page-item a {
+  background-color: var(--custom-bg-secondary) !important;
+  color: var(--custom-text-primary) !important;
+  border-color: var(--custom-border-color) !important;
+}
+
+[data-theme="dark"] .pagination .page-item a:hover {
+  background-color: var(--custom-accent-color) !important;
+  color: #000 !important;
+}
+
+[data-theme="dark"] .pagination .page-item.active a {
+  background-color: var(--custom-accent-color) !important;
+  border-color: var(--custom-accent-color) !important;
+}
+
+/* ==================================================
+   进度条样式优化
+   ================================================== */
+#reading-progress {
+  background: linear-gradient(90deg, #64b5f6, #90caf9) !important;
+}
+
+/* ==================================================
+   相关文章卡片优化
+   ================================================== */
+.related-posts {
+  background-color: var(--card-bg, #fff);
+  border: 1px solid var(--card-border, #e0e0e0);
+}
+
+[data-theme="dark"] .related-posts {
+  background-color: var(--custom-bg-secondary) !important;
+  border-color: var(--custom-border-color) !important;
+}
+
+[data-theme="dark"] .related-posts h3 {
+  color: var(--custom-text-primary) !important;
+}
+
+[data-theme="dark"] .related-posts a {
+  color: var(--custom-text-secondary) !important;
+}
+
+[data-theme="dark"] .related-posts a:hover {
+  color: var(--custom-accent-color) !important;
+}
+
+[data-theme="dark"] .related-posts small {
+  color: var(--custom-text-muted) !important;
+}

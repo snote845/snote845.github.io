@@ -1,0 +1,37 @@
+{%- comment -%}
+  优化的图片包含组件
+  使用方法：
+    {% include img.html src="image.webp" alt="描述" width="800" height="450" %}
+{%- endcomment -%}
+
+{%- assign src = include.src -%}
+{%- assign alt = include.alt | default: 'Image' -%}
+{%- assign width = include.width | default: 800 -%}
+{%- assign height = include.height | default: 450 -%}
+{%- assign loading = include.loading | default: 'lazy' -%}
+
+{%- if src contains '://' -%}
+  {%- assign img_url = src -%}
+{%- else -%}
+  {%- capture img_url -%}
+    {% include media-url.html src=src subpath=page.media_subpath %}
+  {%- endcapture -%}
+{%- endif -%}
+
+<picture>
+  {% if src contains '.png' or src contains '.jpg' or src contains '.jpeg' %}
+    <source
+      type="image/webp"
+      srcset="{{ img_url | replace: '.png', '.webp' | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' }}"
+    >
+  {% endif %}
+  <img
+    src="{{ img_url }}"
+    alt="{{ alt }}"
+    width="{{ width }}"
+    height="{{ height }}"
+    loading="{{ loading }}"
+    decoding="async"
+    class="post-image"
+  >
+</picture>

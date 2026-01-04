@@ -1,4 +1,5 @@
 ---
+excerpt: 开发时总是会遇到Android Studio 与 Gradle/JDK/Kotlin 需要对应关系，所以在这里做个总结。 Android 对应 Gradle 插件版本，8.x 以上 [官网](https://developer.android.com/build/releases/gradle-pl...
 layout: post
 title: "Gradle 在 Android 中的插件版本对应关系"
 date: 2025-07-31 19:00:00 +0800
