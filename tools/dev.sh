@@ -94,8 +94,54 @@ install_gems() {
     bundle install
 }
 
+# 检测是否有新文章
+check_new_posts() {
+    local cache_file=".jekyll-cache/posts_mtime"
+
+    # 获取当前所有文章的最新修改时间
+    local current_mtime=$(find _posts -type f -name "*.md" -printf "%T@\n" 2>/dev/null | sort -r | head -1)
+
+    # 如果没有文章或首次运行
+    if [ -z "$current_mtime" ]; then
+        echo "true"
+        return
+    fi
+
+    # 如果缓存文件不存在
+    if [ ! -f "$cache_file" ]; then
+        mkdir -p .jekyll-cache
+        echo "$current_mtime" > "$cache_file"
+        echo "false"
+        return
+    fi
+
+    # 读取缓存的时间
+    local cached_mtime=$(cat "$cache_file")
+
+    # 比较时间
+    if [ "$current_mtime" != "$cached_mtime" ]; then
+        echo "$current_mtime" > "$cache_file"
+        echo "true"
+        return
+    fi
+
+    echo "false"
+}
+
+# 清理缓存
+clean_cache() {
+    echo -e "${YELLOW}检测到新文章，清理缓存...${NC}"
+    rm -rf .jekyll-cache _site
+    echo -e "${GREEN}缓存已清理${NC}"
+}
+
 # 开发模式运行
 run_dev() {
+    # 检测是否有新文章并清理缓存
+    if [ "$(check_new_posts)" = "true" ]; then
+        clean_cache
+    fi
+
     echo -e "${BLUE}========================================${NC}"
     echo -e "${BLUE}  启动 Jekyll 开发服务器${NC}"
     echo -e "${BLUE}========================================${NC}"

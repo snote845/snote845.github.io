@@ -60,6 +60,33 @@ detect_os() {
         log_error "无法检测操作系统"
         exit 1
     fi
+
+    # 自动检测 Web 用户（如果配置文件中未指定）
+    if [ -z "$WEB_USER" ]; then
+        if [ "$OS" = "ubuntu" ] || [ "$OS" = "debian" ]; then
+            WEB_USER="www-data"
+            WEB_GROUP="www-data"
+            log_info "自动设置 Web 用户: www-data (Ubuntu/Debian)"
+        elif [ "$OS" = "centos" ] || [ "$OS" = "rhel" ] || [ "$OS" = "almalinux" ] || [ "$OS" = "rocky" ]; then
+            WEB_USER="nginx"
+            WEB_GROUP="nginx"
+            log_info "自动设置 Web 用户: nginx (CentOS/RHEL)"
+        else
+            # 默认使用 www-data
+            WEB_USER="www-data"
+            WEB_GROUP="www-data"
+            log_warn "未知操作系统，默认使用 Web 用户: www-data"
+        fi
+    fi
+
+    # 验证用户是否存在
+    if ! id "$WEB_USER" &>/dev/null; then
+        log_error "用户 $WEB_USER 不存在"
+        log_error "请在配置文件中设置正确的 WEB_USER"
+        exit 1
+    fi
+
+    log_info "Web 运行用户: $WEB_USER"
 }
 
 # 安装依赖
@@ -139,17 +166,28 @@ setup_repository() {
 # 安装 Jekyll 依赖
 install_jekyll() {
     log_info "安装 Jekyll 和依赖..."
-    
+
     cd "$DEPLOY_DIR"
-    
-    # 安装 bundler（如果还没有）
-    if ! command -v bundler &> /dev/null; then
-        gem install bundler
+
+    # 生成 Gemfile.lock（如果不存在）
+    if [ ! -f "Gemfile.lock" ]; then
+        log_info "生成 Gemfile.lock..."
+        bundle lock
     fi
-    
-    # 安装项目依赖
-    bundle install --deployment --without development test
-    
+
+    # 配置 bundle（替代废弃的 --deployment 标志）
+    bundle config set --local deployment 'true'
+    bundle config set --local without 'development test'
+
+    # 以 web 用户身份安装依赖
+    log_info "以 $WEB_USER 用户身份安装 gems..."
+    sudo -u "$WEB_USER" bash << EOF
+cd "$DEPLOY_DIR"
+export HOME="\$HOME/.gem"
+export PATH="\$HOME/bin:\$PATH"
+bundle install
+EOF
+
     log_info "Jekyll 依赖安装完成"
 }
 
