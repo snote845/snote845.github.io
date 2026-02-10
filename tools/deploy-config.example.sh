@@ -19,8 +19,13 @@ export GITHUB_URL="https://github.com/${GITHUB_REPO}.git"
 # 服务器部署配置
 # ================================================================
 export DEPLOY_DIR="/var/www/blog"           # 网站部署目录
-export WEB_USER="nginx"                      # Web 运行用户（CentOS）
-export WEB_GROUP="nginx"                     # Web 运行组
+
+# Web 运行用户（根据操作系统自动检测）
+# Ubuntu/Debian: www-data
+# CentOS/RHEL: nginx
+# 如果为空，脚本会自动检测
+export WEB_USER=""                          # 留空自动检测，或手动指定
+export WEB_GROUP=""                         # 留空自动检测，或手动指定
 
 # ================================================================
 # 域名配置
